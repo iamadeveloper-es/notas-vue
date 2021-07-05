@@ -4,7 +4,25 @@
           <b-row>
               <b-col cols="12">
                   <div class="grid">
-
+                      <div class="span-8 app-title">
+                          <h1 class="cl-primaryGrey">Notas Vue</h1>
+                      </div>
+                      <div class="span-5 search-bar">
+                          <input type="text" class="form-input" placeholder="Buscar...">
+                          <span class="fas fa-times"></span>
+                      </div>
+                      <div class="span-2 nav-menu">
+                          <nav class="nav justify-content-end">
+                              <ul class="ul-reset d-flex">
+                                  <li class="p-2">
+                                      <span class="fas fa-th-list"></span>
+                                  </li>
+                                  <li class="p-2">
+                                      <span class="fas fa-cog"></span>
+                                  </li>
+                              </ul>
+                          </nav>
+                      </div>
                   </div>
               </b-col>
           </b-row>
@@ -19,10 +37,67 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-header
+.app-header{
+    padding: 15px;
+    border-bottom: 1px solid rgba(217, 217, 217, .8);
+}
 .grid{
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+    align-items: center;
     gap: 20px;
+}
+.span-8{
+    grid-column: 1 / -1;
+}
+.span-5{
+    grid-column: 1 / -1;
+}
+.span-2{
+    grid-column: 1 / -1;
+}
+.search-bar{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border: 1px solid $secondaryGrey;
+    border-radius: 10px;
+    overflow: hidden;
+    .fas{
+        width: 30px;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+}
+.form-input{
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    border: none;
+    outline-color: transparent;
+    color: $primaryGrey;
+    &::placeholder{
+        color: $strongGrey;
+    }
+}
+
+
+@media screen and(min-width: 992px){
+    .app-header{
+        padding: 30px;
+    }
+    .span-8{
+        grid-column: 1 / 3;
+    }
+    .span-5{
+    grid-column: 3 / 6;
+    }
+    .span-2{
+        grid-column: 8 / -1;
+    }
 }
 </style>
