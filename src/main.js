@@ -9,6 +9,17 @@ import store from './store'
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 
+Vue.filter('firstChar', function(value){
+  if(!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase()
+});
+
+Vue.filter('removeSpaces', function(value){
+  if(!value) return ''
+  return value.replace(/\s+/g, '')
+})
+
 new Vue({
   router,
   store,

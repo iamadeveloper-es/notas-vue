@@ -7,18 +7,25 @@
                       <div class="span-8 app-title">
                           <h1 class="cl-primaryGrey">Notas Vue</h1>
                       </div>
-                      <div class="span-5 search-bar">
+                      <div v-if="isLogin" class="span-5 search-bar">
                           <input type="text" class="form-input" placeholder="Buscar...">
                           <span class="fas fa-times"></span>
                       </div>
-                      <div class="span-2 nav-menu">
+                      <div v-if="isLogin" class="span-2 nav-menu">
                           <nav class="nav justify-content-end">
-                              <ul class="ul-reset d-flex">
+                              <ul class="ul-reset d-flex align-items-center">
                                   <li class="p-2">
                                       <span class="fas fa-th-list"></span>
                                   </li>
                                   <li class="p-2">
                                       <span class="fas fa-cog"></span>
+                                  </li>
+                                  <li class="p-2">
+                                      <user-component
+                                        :name="this.getUserInfo.name"
+                                        :userName="false"
+                                        :class="['small']"
+                                      ></user-component>
                                   </li>
                               </ul>
                           </nav>
@@ -31,8 +38,20 @@
 </template>
 
 <script>
+import UserComponent from './UI/User/UserComponent.vue'
+import {mapState} from 'vuex'
 export default {
-
+  components: { UserComponent },
+    props:['isLogin'],
+    computed:{
+        ...mapState(['user']),
+        getUserInfo(){
+            return this.user
+        }
+    },
+    mounted(){
+        this.getUserInfo
+    }
 }
 </script>
 
@@ -74,15 +93,7 @@ export default {
     }
 }
 .form-input{
-    width: 100%;
     height: 100%;
-    padding-left: 15px;
-    border: none;
-    outline-color: transparent;
-    color: $primaryGrey;
-    &::placeholder{
-        color: $strongGrey;
-    }
 }
 
 

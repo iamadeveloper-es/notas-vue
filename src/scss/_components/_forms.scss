@@ -1,0 +1,21 @@
+.form-input{
+    width: 100%;
+    min-height: 40px;
+    padding-left: 15px;
+    border-radius: 5px;
+    outline: $secondaryGrey;
+    outline-width: 1px;
+    border: 1px solid $secondaryGrey;
+    color: $primaryGrey;
+    &.no-border{
+        border: none;
+        outline-color: transparent;
+    }
+    &::placeholder{
+        color: $strongGrey;
+    }
+}
+textarea{
+    resize: none;
+    min-height: 40px;
+}
